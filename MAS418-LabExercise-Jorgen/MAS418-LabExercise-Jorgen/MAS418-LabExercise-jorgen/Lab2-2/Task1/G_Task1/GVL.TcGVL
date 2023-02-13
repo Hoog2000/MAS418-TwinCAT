@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{18b98b1e-a86a-4e9d-9eba-c9b4e5ec7cb9}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	dtCurrentdate : DATE_AND_TIME := DT#2023-02-13-19:58:39;
+	tTimeVar : TIME := T#4S;
+	aDateArray : ARRAY[0..3] OF DATE := [D#2023-02-07, D#2023-02-08, D#2023-02-09, D#2023-02-10];
+	eSensor1 : E_SensorBrand := E_SensorBrand.Parker;
+	bTimeStarter : BOOL := FALSE;
+	bOutQ : BOOL;
+	tElapseTime : TIME;
+	fbTimer : TON := (PT := T#10S);
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

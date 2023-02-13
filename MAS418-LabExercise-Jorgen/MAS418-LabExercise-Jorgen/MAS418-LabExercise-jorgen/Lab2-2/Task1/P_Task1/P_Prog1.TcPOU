@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_Prog1" Id="{6f86468e-f8b9-4717-87e3-d9e0af6e1dd8}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_Prog1
+VAR
+	pDatePointer : POINTER TO DATE_AND_TIME := ADR(GVL.dtCurrentdate);
+	nTimeRefrence : REFERENCE TO TIME := GVL.tTimeVar;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pDatePointer^ := DT#2023-02-08-15:31:19;
+nTimeRefrence := T#2S;
+GVL.aDateArray[2] := D#2023-02-25;
+GVL.eSensor1 := E_SensorBrand.Bosch;
+GVL.fbTimer(IN := GVL.bTimeStarter);
+GVL.bOutQ := GVL.fbTimer.Q;
+GVL.tElapseTime := GVL.fbTimer.ET;
+]]></ST>
+    </Implementation>
+    <LineIds Name="P_Prog1">
+      <LineId Id="5" Count="0" />
+      <LineId Id="12" Count="5" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
