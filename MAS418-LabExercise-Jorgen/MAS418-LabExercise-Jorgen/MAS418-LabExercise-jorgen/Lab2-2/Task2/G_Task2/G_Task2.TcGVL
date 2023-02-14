@@ -3,6 +3,11 @@
   <GVL Name="G_Task2" Id="{734fe8fc-1960-4684-8004-5362632b17d1}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
+	stTimer2 : ST_Timer := (tTimer := T#5S);
+	fMotor1Rad : REAL;
+	fMotor1Deg : REAL := 180;
+	st_MotorParameters1 : ST_Motor;
+	st_MotorParameters2 : ST_Motor;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

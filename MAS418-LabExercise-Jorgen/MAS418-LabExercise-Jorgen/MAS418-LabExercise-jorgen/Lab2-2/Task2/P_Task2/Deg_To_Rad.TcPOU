@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Deg_To_Rad" Id="{2368cef4-5365-437d-9566-2947eef801c5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Deg_To_Rad : REAL
+VAR_INPUT
+	fDeg : REAL;
+END_VAR
+VAR
+	fPi : REAL := 3.14159265359;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Deg_To_Rad := (fDeg * fPi)/180;]]></ST>
+    </Implementation>
+    <LineIds Name="Deg_To_Rad">
+      <LineId Id="7" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

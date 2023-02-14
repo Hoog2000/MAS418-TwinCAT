@@ -3,13 +3,32 @@
   <POU Name="P_Task2" Id="{9ed0eceb-1ce7-484d-b635-a4528063a015}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_Task2
 VAR
+	fbTof : TOF;
+	fbRTrig : R_TRIG;
+	bMotorUpdate : BOOL;
+	fNewValue : REAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[fbTof(IN := G_Task2.stTimer2.bTimerStat,
+		PT := G_Task2.stTimer2.tTimer,
+		Q => G_Task2.stTimer2.bTimerOut,
+		ET => G_Task2.stTimer2.tTimeElapsed);
+		
+G_Task2.fMotor1Rad := Deg_To_Rad(fDeg := G_Task2.fMotor1Deg);
+
+fbRTrig(CLK := bMotorUpdate);
+Updete_Motor_Parameters(bUpdateValue := fbRTrig.Q, fNewValue := fNewValue, G_Task2.st_MotorParameters1);
+Updete_Motor_Parameters_Reference(bUpdateValue := fbRTrig.Q, fNewValue := fNewValue, G_Task2.st_MotorParameters2);]]></ST>
     </Implementation>
     <LineIds Name="P_Task2">
       <LineId Id="5" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="15" Count="1" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="22" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -33,11 +33,26 @@
     <Compile Include="Task1\P_Task1\P_Prog1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Task2\D_Task2\ST_Motor.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task2\D_Task2\ST_Timer.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Task2\G_Task2\G_Task2.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
+    <Compile Include="Task2\P_Task2\Deg_To_Rad.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Task2\P_Task2\P_Task2.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task2\P_Task2\Updete_Motor_Parameters.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Task2\P_Task2\Updete_Motor_Parameters_Reference.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -49,6 +64,7 @@
     <Folder Include="Task1\D_Task1" />
     <Folder Include="Task1\P_Task1" />
     <Folder Include="Task2\G_Task2" />
+    <Folder Include="Task2\D_Task2" />
     <Folder Include="Task2\P_Task2" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
@@ -75,8 +91,8 @@
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{192FAD59-8248-4824-A8DE-9177C94C195A}</v>
@@ -103,13 +119,13 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

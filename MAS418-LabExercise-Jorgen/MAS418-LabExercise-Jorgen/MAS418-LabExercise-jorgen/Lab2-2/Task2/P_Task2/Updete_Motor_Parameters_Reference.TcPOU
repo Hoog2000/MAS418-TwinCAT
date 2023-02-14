@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Updete_Motor_Parameters_Reference" Id="{34ed5731-b12d-40f6-a8f6-9c9b7a879187}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION Updete_Motor_Parameters_Reference
+VAR_INPUT
+	bUpdateValue : BOOL;
+	fNewValue : REAL;
+	stMotorParameters : REFERENCE TO ST_Motor;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bUpdateValue = 1 THEN
+	stMotorParameters.fSpeedMax := fNewValue;
+ELSE
+	stMotorParameters.fSpeedMax := stMotorParameters.fSpeedMax;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Updete_Motor_Parameters_Reference">
+      <LineId Id="7" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="12" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
