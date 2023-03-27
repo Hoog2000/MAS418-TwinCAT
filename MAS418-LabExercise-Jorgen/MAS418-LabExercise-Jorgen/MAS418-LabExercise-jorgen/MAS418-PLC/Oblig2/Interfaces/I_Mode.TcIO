@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Mode" Id="{549464dc-6cee-4a7a-b50a-8097247a1df4}">
+    <Declaration><![CDATA[INTERFACE I_Mode
+]]></Declaration>
+    <Method Name="Auto" Id="{5da90a85-7023-45c6-b96d-26f47b45e9e1}">
+      <Declaration><![CDATA[METHOD Auto
+VAR_INPUT
+	bEnable : BOOL;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Maunal" Id="{9a2e9f96-69d3-475e-8501-288f16cecae8}">
+      <Declaration><![CDATA[METHOD Maunal
+VAR_INPUT
+	bEnable : BOOL;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Off" Id="{01b6d52f-a4b8-4d03-8f12-a74d9000cb05}">
+      <Declaration><![CDATA[METHOD Off
+VAR_INPUT
+	bEnable : BOOL;
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

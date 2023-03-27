@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_Inputs" Id="{1b387283-05cb-4799-bd28-84ac7ae3617c}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	fJoyX : LREAL;
+	fJoyY : LREAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

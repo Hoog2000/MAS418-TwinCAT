@@ -12,7 +12,10 @@ VAR_GLOBAL
 	bRunning : BOOL;
 	bConfirmation : BOOL;
 	bConfirmationStop : BOOL;
+	bTopSwitch : BOOL;
 	bFault : BOOL;
+	fJoyY : LREAL;
+	fJoyX : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

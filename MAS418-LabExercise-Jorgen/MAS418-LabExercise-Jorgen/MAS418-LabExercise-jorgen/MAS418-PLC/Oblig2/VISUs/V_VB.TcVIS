@@ -125,19 +125,19 @@
                       <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                         <o>
                           <v n="Id">1404881523L</v>
-                          <v n="Value" t="Single">0</v>
+                          <v n="Value" t="Single">-1</v>
                         </o>
                         <o>
                           <v n="Id">3837067714L</v>
-                          <v n="Value" t="Single">100</v>
+                          <v n="Value" t="Single">1</v>
                         </o>
                         <o>
                           <v n="Id">2867424708L</v>
-                          <v n="Value" t="Single">10</v>
+                          <v n="Value" t="Single">1</v>
                         </o>
                         <o>
                           <v n="Id">440407611L</v>
-                          <v n="Value" t="Single">5</v>
+                          <v n="Value" t="Single">0</v>
                         </o>
                         <o>
                           <v n="Id">2608923542L</v>
@@ -227,6 +227,14 @@
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
                         </o>
+                        <o>
+                          <v n="Id">3352862552L</v>
+                          <v n="Value">false</v>
+                        </o>
+                        <o>
+                          <v n="Id">397264524L</v>
+                          <v n="Value">"G_VB.fJoyX"</v>
+                        </o>
                       </l>
                     </o>
                     <v n="VisualElementName">"Slider"</v>
@@ -251,19 +259,19 @@
                       <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                         <o>
                           <v n="Id">1404881523L</v>
-                          <v n="Value" t="Single">0</v>
+                          <v n="Value" t="Single">-1</v>
                         </o>
                         <o>
                           <v n="Id">3837067714L</v>
-                          <v n="Value" t="Single">100</v>
+                          <v n="Value" t="Single">1</v>
                         </o>
                         <o>
                           <v n="Id">2867424708L</v>
-                          <v n="Value" t="Single">10</v>
+                          <v n="Value" t="Single">1</v>
                         </o>
                         <o>
                           <v n="Id">440407611L</v>
-                          <v n="Value" t="Single">5</v>
+                          <v n="Value" t="Single">0</v>
                         </o>
                         <o>
                           <v n="Id">2608923542L</v>
@@ -352,6 +360,14 @@
                         <o>
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
+                        </o>
+                        <o>
+                          <v n="Id">3352862552L</v>
+                          <v n="Value">false</v>
+                        </o>
+                        <o>
+                          <v n="Id">397264524L</v>
+                          <v n="Value">"G_VB.fJoyY"</v>
                         </o>
                       </l>
                     </o>
@@ -659,7 +675,7 @@
                         </o>
                         <o>
                           <v n="Id">357335551L</v>
-                          <v n="Value">145</v>
+                          <v n="Value" t="Int16">150</v>
                         </o>
                         <o>
                           <v n="Id">2422045748L</v>
@@ -1534,6 +1550,10 @@
                         <o>
                           <v n="Id">2597686782L</v>
                           <v n="Value">false</v>
+                        </o>
+                        <o>
+                          <v n="Id">743958181L</v>
+                          <v n="Value">"G_VB.bTopSwitch"</v>
                         </o>
                       </l>
                     </o>

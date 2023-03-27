@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ModeSelector" Id="{8d661737-e6f1-4be1-b710-d464792d9a5d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeSelector
+VAR_INPUT
+	bControlBox : BOOL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fbModeRealControlBox : FB_ModeRealControlBox;
+	fbModeVisualControlBox : FB_ModeVisualControlBox;
+	fbMode : I_ControlType := fbModeVisualControlBox;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT(bControlBox) THEN
+	fbMode := fbModeVisualControlBox;
+		IF (G_VB.bFault) THEN
+			fbMode.Mode(E_Mode.OFF);
+			fbMode.Status(E_Status.Fault);
+			fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+		ELSE
+			IF NOT(G_VB.bOn) THEN
+				fbMode.Mode(E_Mode.OFF);
+				fbMode.Status(E_Status.NotReady);
+				fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+			ELSIF (G_VB.bOn) AND (G_VB.bAuto) THEN
+				fbMode.Mode(E_Mode.Auto);
+				fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					IF (G_VB.bStop) AND NOT(G_VB.bConfirmationStop) THEN
+						fbMode.Status(E_Status.Stoping);
+					ELSIF (G_VB.bStart) AND NOT(G_VB.bConfirmation) AND NOT(G_VB.bStop) THEN
+						fbMode.Status(E_Status.Starting);
+					ELSIF (G_VB.bStart) AND (G_VB.bConfirmation) AND NOT(G_VB.bStop) THEN
+						fbMode.Status(E_Status.Running);
+					ELSE
+						fbMode.Status(E_Status.Ready);
+					END_IF
+			ELSIF (G_VB.bOn) AND NOT(G_VB.bAuto) THEN
+				fbMode.Mode(E_Mode.Manual);
+					IF (G_VB.bStop) AND NOT(G_VB.bConfirmationStop) THEN
+						fbMode.Status(E_Status.Stoping);
+						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					ELSIF (G_VB.bStart) AND NOT(G_VB.bConfirmation) AND NOT(G_VB.bStop) THEN
+						fbMode.Status(E_Status.Starting);
+						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					ELSIF (G_VB.bStart) AND (G_VB.bConfirmation) AND NOT(G_VB.bStop) THEN
+						fbMode.Status(E_Status.Running);
+						IF (G_VB.bTopSwitch) THEN
+							fbMode.Joystick(bActive := TRUE, bSwitch := TRUE);
+						ELSE
+							fbMode.Joystick(bActive := TRUE, bSwitch := FALSE);
+						END_IF
+					ELSE
+						fbMode.Status(E_Status.Ready);
+						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					END_IF
+			END_IF
+		END_IF
+ELSIF (bControlBox) THEN
+	fbMode := fbModeRealControlBox;
+		
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

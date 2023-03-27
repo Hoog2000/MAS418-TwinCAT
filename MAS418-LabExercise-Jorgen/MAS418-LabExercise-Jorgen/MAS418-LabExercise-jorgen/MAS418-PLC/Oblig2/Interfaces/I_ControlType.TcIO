@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_ControlType" Id="{c3d0b8cd-a2e5-4cf6-a7af-6729a2c0238a}">
+    <Declaration><![CDATA[INTERFACE I_ControlType
+]]></Declaration>
+    <Method Name="Joystick" Id="{092f3369-1f84-408c-9be7-56d5e5c3ae50}">
+      <Declaration><![CDATA[METHOD Joystick
+VAR_INPUT
+	bSwitch : BOOL;
+	bActive : BOOL;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Mode" Id="{8ea05e7a-e48a-4272-8f39-4382aec6a3a4}">
+      <Declaration><![CDATA[METHOD Mode
+VAR_INPUT
+	eCurrentMode : E_Mode;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Status" Id="{22bdb8b7-ddbe-4802-948f-92f2936fd6a5}">
+      <Declaration><![CDATA[METHOD Status
+VAR_INPUT
+	eStatus : E_Status;
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

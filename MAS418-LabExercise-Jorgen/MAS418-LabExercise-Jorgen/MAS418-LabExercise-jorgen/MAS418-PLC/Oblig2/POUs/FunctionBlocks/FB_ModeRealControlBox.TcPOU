@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ModeRealControlBox" Id="{b31b85cc-8919-41c1-8b96-0bd7ce275843}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeRealControlBox IMPLEMENTS I_ControlType
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Joystick" Id="{2938f7a2-aab4-4c3c-a932-262a2d51b521}">
+      <Declaration><![CDATA[METHOD Joystick
+VAR_INPUT
+	bSwitch	: BOOL;
+	bActive : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Mode" Id="{cbaf3c46-ffe3-4434-b8af-272018a9ab02}">
+      <Declaration><![CDATA[METHOD Mode
+VAR_INPUT
+	eCurrentMode : E_Mode;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Status" Id="{a894cb22-3894-421e-bccf-3fce7048e641}">
+      <Declaration><![CDATA[METHOD Status
+VAR_INPUT
+	eStatus : E_Status;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

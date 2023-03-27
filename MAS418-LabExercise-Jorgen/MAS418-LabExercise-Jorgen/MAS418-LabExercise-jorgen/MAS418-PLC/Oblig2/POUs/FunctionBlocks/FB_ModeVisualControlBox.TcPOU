@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ModeVisualControlBox" Id="{5887b034-35fa-4339-b985-b0c482f7b634}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeVisualControlBox IMPLEMENTS I_ControlType
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Joystick" Id="{db07259e-d434-4bb8-906d-ae09af6d2152}">
+      <Declaration><![CDATA[METHOD Joystick
+VAR_INPUT
+	bSwitch	: BOOL;
+	bActive : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT(bActive) THEN
+	G_Inputs.fJoyY := 0.0;
+	G_Inputs.fJoyX := 0.0;
+	G_VB.fJoyX := 0.0;
+	G_VB.fJoyY := 0.0;
+ELSIF (bSwitch) THEN
+	G_Inputs.fJoyY := G_VB.fJoyY;
+	G_Inputs.fJoyX := 0.0;
+	G_VB.fJoyX := 0.0;
+ELSIF NOT(bSwitch) THEN
+	G_Inputs.fJoyY := 0.0;
+	G_Inputs.fJoyX := G_VB.fJoyX;
+	G_VB.fJoyY := 0.0;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Mode" Id="{3fa2b439-0814-43e9-b1c7-9d95cf660055}">
+      <Declaration><![CDATA[METHOD Mode
+VAR_INPUT
+	eCurrentMode : E_Mode;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[G_VB.eMode := eCurrentMode;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Status" Id="{15912bcb-7cba-4af3-9021-2949e1b2aceb}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Status
+VAR_INPUT
+	eStatus : E_Status;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[G_VB.eStatus := eStatus;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

@@ -3,17 +3,11 @@
   <POU Name="MAIN" Id="{134ce0fc-6d16-44c6-b69e-adf0e685ef00}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
-	fbModeSelector : FB_ModeSelector;
-	fbStatus : FB_Status;
+	fbModeSelector : FB_ModeSelector;	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbModeSelector(bControlBox := FALSE);
-fbStatus();]]></ST>
+      <ST><![CDATA[fbModeSelector(bControlBox := TRUE);]]></ST>
     </Implementation>
-    <LineIds Name="MAIN">
-      <LineId Id="2" Count="0" />
-      <LineId Id="8" Count="0" />
-    </LineIds>
   </POU>
 </TcPlcObject>
