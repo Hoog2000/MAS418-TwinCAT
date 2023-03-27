@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ModeVisualization" Id="{6974c941-443e-4297-a4bf-0fa9ebcac1c2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ModeVisualization
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Auto" Id="{5c1f72fd-a66d-45be-ade5-39c0e8007b91}">
+      <Declaration><![CDATA[METHOD Auto
+VAR_INPUT
+	bEnable : BOOL;
+END_VAR
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bEnable THEN
+	G_VB.eMode := E_Mode.Auto;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Manual" Id="{0bda4b34-43ce-47cd-ac2f-d3c89dac0863}">
+      <Declaration><![CDATA[METHOD Manual
+VAR_INPUT
+	bEnable : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bEnable THEN
+	G_VB.eMode := E_Mode.Manual;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Off" Id="{7a42fcde-312e-486f-9962-b7fdafd495cd}">
+      <Declaration><![CDATA[METHOD Off
+VAR_INPUT
+	bEnable : BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bEnable THEN
+	G_VB.eMode := E_Mode.OFF;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_ModeVisualization">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ModeVisualization.Auto">
+      <LineId Id="6" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ModeVisualization.Manual">
+      <LineId Id="7" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_ModeVisualization.Off">
+      <LineId Id="7" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

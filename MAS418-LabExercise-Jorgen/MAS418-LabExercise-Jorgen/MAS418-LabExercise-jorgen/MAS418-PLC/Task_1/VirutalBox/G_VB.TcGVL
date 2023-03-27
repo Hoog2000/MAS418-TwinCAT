@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_VB" Id="{81a47064-6bf0-4a2c-b738-072594024d4a}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	eMode : E_Mode;
+	eStatus : E_Status;
+	bOn : BOOL := FALSE;
+	bAuto : BOOL;
+	bStart : BOOL;
+	bStop : BOOL;
+	bRunning : BOOL;
+	bConfirmation : BOOL;
+	bConfirmationStop : BOOL;
+	bFault : BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

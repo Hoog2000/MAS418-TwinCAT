@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{134ce0fc-6d16-44c6-b69e-adf0e685ef00}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	fbModeSelector : FB_ModeSelector;
+	fbStatus : FB_Status;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbModeSelector(bControlBox := FALSE);
+fbStatus();]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="8" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

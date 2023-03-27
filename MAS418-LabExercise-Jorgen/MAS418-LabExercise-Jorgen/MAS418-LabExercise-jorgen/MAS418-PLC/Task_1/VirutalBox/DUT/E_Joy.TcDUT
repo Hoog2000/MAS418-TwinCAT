@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="E_Joy" Id="{ffd29c0e-3e23-48c5-93a6-1239aea1f2fa}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE E_Joy :
+(
+	JoyX,
+	JoyY
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>
