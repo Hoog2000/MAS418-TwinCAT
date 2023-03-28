@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_OpenLoopWinchSetings" Id="{a3f73810-9df0-4ca0-9bf3-dd6dbbdd159d}">
+    <Declaration><![CDATA[TYPE ST_OpenLoopWinchSetings :
+STRUCT
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -58,9 +58,51 @@ END_VAR
 					END_IF
 			END_IF
 		END_IF
+		
 ELSIF (bControlBox) THEN
 	fbMode := fbModeRealControlBox;
-		
+		IF (G_Inputs.bFault) THEN
+			fbMode.Mode(E_Mode.OFF);
+			fbMode.Status(E_Status.Fault);
+			fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+		ELSE
+			IF (G_Inputs.bOff) THEN
+				fbMode.Mode(E_Mode.OFF);
+				fbMode.Status(E_Status.NotReady);
+				fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+			ELSIF NOT(G_Inputs.bOff) AND (G_Inputs.bAuto) THEN
+				fbMode.Mode(E_Mode.Auto);
+				fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					IF (G_Inputs.bStop) AND NOT(G_Inputs.bConfirmationStop) THEN
+						fbMode.Status(E_Status.Stoping);
+					ELSIF (G_Inputs.bStart) AND NOT(G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+						fbMode.Status(E_Status.Starting);
+					ELSIF (G_Inputs.bStart) AND (G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+						fbMode.Status(E_Status.Running);
+					ELSE
+						fbMode.Status(E_Status.Ready);
+					END_IF
+			ELSIF NOT(G_Inputs.bOff) AND NOT(G_Inputs.bAuto) THEN
+				fbMode.Mode(E_Mode.Manual);
+					IF (G_Inputs.bStop) AND NOT(G_Inputs.bConfirmationStop) THEN
+						fbMode.Status(E_Status.Stoping);
+						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					ELSIF (G_Inputs.bStart) AND NOT(G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+						fbMode.Status(E_Status.Starting);
+						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					ELSIF (G_Inputs.bStart) AND (G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+						fbMode.Status(E_Status.Running);
+						IF (G_Inputs.bTopSwitch) THEN
+							fbMode.Joystick(bActive := TRUE, bSwitch := TRUE);
+						ELSE
+							fbMode.Joystick(bActive := TRUE, bSwitch := FALSE);
+						END_IF
+					ELSE
+						fbMode.Status(E_Status.Ready);
+						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
+					END_IF
+			END_IF
+		END_IF
 END_IF]]></ST>
     </Implementation>
   </POU>

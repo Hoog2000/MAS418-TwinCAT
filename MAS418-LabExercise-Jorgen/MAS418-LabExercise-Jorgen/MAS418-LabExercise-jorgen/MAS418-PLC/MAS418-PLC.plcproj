@@ -24,6 +24,10 @@
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
+    <Compile Include="Oblig2\GVLs\G_Outputs.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="Oblig2\GVLs\G_RealControlBox.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>

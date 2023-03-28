@@ -20,7 +20,20 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[IF NOT(bActive) THEN
+	G_Inputs.fJoyY := 0.0;
+	G_Inputs.fJoyX := 0.0;
+	G_VB.fJoyX := 0.0;
+	G_VB.fJoyY := 0.0;
+ELSIF (bSwitch) THEN
+	G_Inputs.fJoyY := G_VB.fJoyY;
+	G_Inputs.fJoyX := 0.0;
+	G_VB.fJoyX := 0.0;
+ELSIF NOT(bSwitch) THEN
+	G_Inputs.fJoyY := 0.0;
+	G_Inputs.fJoyX := G_VB.fJoyX;
+	G_VB.fJoyY := 0.0;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="Mode" Id="{cbaf3c46-ffe3-4434-b8af-272018a9ab02}">
@@ -30,7 +43,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[G_VB.eMode := eCurrentMode;]]></ST>
       </Implementation>
     </Method>
     <Method Name="Status" Id="{a894cb22-3894-421e-bccf-3fce7048e641}">
@@ -40,7 +53,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[G_VB.eStatus := eStatus;]]></ST>
       </Implementation>
     </Method>
   </POU>
