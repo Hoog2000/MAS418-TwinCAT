@@ -20,60 +20,142 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\GVLs\G_Inputs.TcGVL">
+    <Compile Include="ControlBox\GVLs\G_Inputs.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="Oblig2\GVLs\G_Outputs.TcGVL">
+    <Compile Include="ControlBox\GVLs\G_RealControlBox.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="Oblig2\GVLs\G_RealControlBox.TcGVL">
+    <Compile Include="ControlBox\GVLs\G_VB.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="Oblig2\GVLs\G_VB.TcGVL">
-      <SubType>Code</SubType>
-      <LinkAlways>true</LinkAlways>
-    </Compile>
-    <Compile Include="Oblig2\POUs\FunctionBlocks\FB_ModeRealControlBox.TcPOU">
+    <Compile Include="ControlBox\POUs\FunctionBlocks\FB_ModeRealControlBox.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\POUs\FunctionBlocks\FB_ModeSelector.TcPOU">
+    <Compile Include="ControlBox\POUs\FunctionBlocks\FB_ModeSelector.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\POUs\FunctionBlocks\FB_ModeVisualControlBox.TcPOU">
+    <Compile Include="ControlBox\POUs\FunctionBlocks\FB_ModeVisualControlBox.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\VISUs\V_VB.TcVIS">
+    <Compile Include="ControlBox\VISUs\V_VB.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
+    </Compile>
+    <Compile Include="Inputs\FunctionBlocks\FB_AnalogInputScaling.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\FunctionBlocks\FB_Encoder.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\FunctionBlocks\FB_FlowMeterInputScaling.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\FunctionBlocks\FB_JoystickInputScaling.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\GVLs\G_ScaledSensorData.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="Inputs\P_Inputs.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\Structs\ST_AnalogInput.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\Structs\ST_AnalogInputScaling.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\Structs\ST_AnalogInputStatus.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\Structs\ST_FlowMeterInputScaling.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\Structs\ST_JoystickInputScaling.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\DUTs\ST_OpenLoopControlCylinderSettings.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\DUTs\ST_OpenLoopControlWinchSettings.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\DUTs\ST_Parameters.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\DUTs\ST_ValveOutput.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\DUTs\ST_ValveDeadBand.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\FunctionBlocks\MainBlocks\FB_ManualControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\FunctionBlocks\SubBlocks\FB_Joystick.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\FunctionBlocks\SubBlocks\FB_OpenLoopCylinderControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\FunctionBlocks\SubBlocks\FB_OpenLoopWinchControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\FunctionBlocks\SubBlocks\FB_ValveOutput.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MotionControl\GVLs\G_Outputs.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="MotionControl\GVLs\G_Parameters.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="MotionControl\GVLs\G_Work.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="MotionControl\POUs\P_CraneControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Inputs\GVLs\G_RawSensorData.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="MotionControl\POUs\P_Outputs.TcPOU">
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\MAIN.TcPOU">
+    <Compile Include="Programs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\DUTs\E_Button.TcDUT">
+    <Compile Include="ControlBox\DUTs\E_Button.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\DUTs\E_Joy.TcDUT">
+    <Compile Include="ControlBox\DUTs\E_Joy.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\DUTs\E_Light.TcDUT">
+    <Compile Include="ControlBox\DUTs\E_Light.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\DUTs\E_Mode.TcDUT">
+    <Compile Include="ControlBox\DUTs\E_Mode.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\DUTs\E_Status.TcDUT">
+    <Compile Include="ControlBox\DUTs\E_Status.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\Interfaces\I_ControlType.TcIO">
+    <Compile Include="ControlBox\Interfaces\I_ControlType.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Oblig2\Interfaces\I_Mode.TcIO">
+    <Compile Include="ControlBox\Interfaces\I_Mode.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualization Manager.TcVMO">
@@ -81,15 +163,26 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Oblig2" />
-    <Folder Include="Oblig2\GVLs" />
-    <Folder Include="Oblig2\VISUs" />
-    <Folder Include="POUs" />
-    <Folder Include="Oblig2\DUTs" />
-    <Folder Include="Oblig2\Interfaces" />
-    <Folder Include="Oblig2\POUs" />
-    <Folder Include="Oblig2\POUs\FunctionBlocks" />
-    <Folder Include="Oblig2\POUs\Functions" />
+    <Folder Include="ControlBox" />
+    <Folder Include="ControlBox\GVLs" />
+    <Folder Include="ControlBox\VISUs" />
+    <Folder Include="Inputs\FunctionBlocks" />
+    <Folder Include="Inputs\Structs" />
+    <Folder Include="MotionControl" />
+    <Folder Include="MotionControl\FunctionBlocks\MainBlocks" />
+    <Folder Include="MotionControl\FunctionBlocks\SubBlocks" />
+    <Folder Include="MotionControl\GVLs" />
+    <Folder Include="MotionControl\DUTs" />
+    <Folder Include="MotionControl\FunctionBlocks" />
+    <Folder Include="MotionControl\POUs" />
+    <Folder Include="Inputs" />
+    <Folder Include="Inputs\GVLs" />
+    <Folder Include="Programs" />
+    <Folder Include="ControlBox\DUTs" />
+    <Folder Include="ControlBox\Interfaces" />
+    <Folder Include="ControlBox\POUs" />
+    <Folder Include="ControlBox\POUs\FunctionBlocks" />
+    <Folder Include="ControlBox\POUs\Functions" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="System_VisuElemMeter">

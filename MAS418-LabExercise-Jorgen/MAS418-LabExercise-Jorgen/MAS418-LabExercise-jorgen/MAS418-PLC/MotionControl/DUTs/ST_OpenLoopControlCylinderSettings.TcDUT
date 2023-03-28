@@ -3,6 +3,9 @@
   <DUT Name="ST_OpenLoopControlCylinderSettings" Id="{f03fd1f8-b5c1-441a-8cea-4bdaa3b3f2f5}">
     <Declaration><![CDATA[TYPE ST_OpenLoopControlCylinderSettings :
 STRUCT
+	fBoreArea : LREAL := 0.0033183;
+	fAnnulusArea : LREAL := 0.0023562;
+	fMaxFlowCapacity : LREAL := 75;
 END_STRUCT
 END_TYPE
 ]]></Declaration>

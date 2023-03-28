@@ -3,14 +3,65 @@
   <POU Name="FB_ManualControl" Id="{030c0b1e-cfb9-4458-97b6-7b35e272d107}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_ManualControl
 VAR_INPUT
+	eMode : E_Mode;
+	eStatus : E_Status;
+	stParam : ST_Parameters;
 END_VAR
 VAR_OUTPUT
+	fControlOutputNormalizedCylinder : LREAL;
+	fControlOutputNormalizedWinch : LREAL;
 END_VAR
+	
 VAR
+	fbJoystick : FB_Joystick;
+	fbOpenLoopCylindeControl : FB_OpenLoopCylinderControl;
+	fbOpenLoopWinchControl : FB_OpenLoopWinchControl;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF NOT(G_RawSensorData.bJoystickEnable) THEN
+	fbJoystick(
+		bEnable := (eMode = E_Mode.Manual),
+		stParam := stParam,
+		fNormalizedInput := G_ScaledSensorData.fJoystickNormalizedX,
+	);
+	
+	fbOpenLoopCylindeControl(
+		bEnable := (eMode = E_Mode.Manual),
+		stParam := stParam,
+		fInput_ms := fbJoystick.fOutput,
+		fNormalizedOutput => fControlOutputNormalizedCylinder,
+	);
+	
+	fbOpenLoopWinchControl(
+		bEnable := (eMode = E_Mode.Manual),
+		stParam := stParam,
+		fInput_ms := 0.0,
+		fNormalizedOutput => fControlOutputNormalizedWinch,
+	);
+	
+ELSIF	(G_RawSensorData.bJoystickEnable) THEN
+	fbJoystick(
+		bEnable := (eMode = E_Mode.Manual),
+		stParam := stParam,
+		fNormalizedInput := G_ScaledSensorData.fJoystickNormalizedY
+	);
+	
+	fbOpenLoopCylindeControl(
+		bEnable := (eMode = E_Mode.Manual),
+		stParam := stParam,
+		fInput_ms := 0.0,
+		fNormalizedOutput => fControlOutputNormalizedCylinder,
+	);
+	
+	fbOpenLoopWinchControl(
+		bEnable := (eMode = E_Mode.Manual),
+		stParam := stParam,
+		fInput_ms := fbJoystick.fOutput,
+		fNormalizedOutput => fControlOutputNormalizedWinch,
+	);
+END_IF
+	]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

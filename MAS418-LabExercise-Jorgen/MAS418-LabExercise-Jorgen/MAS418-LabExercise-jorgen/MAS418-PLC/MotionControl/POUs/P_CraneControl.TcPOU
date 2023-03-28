@@ -3,10 +3,29 @@
   <POU Name="P_CraneControl" Id="{1bd1ed35-d2d7-4f93-babb-6fa5380df044}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_CraneControl
 VAR
+	fbManualControl : FB_ManualControl;
+	bEnableManualControl : BOOL;
+	fControlOutputNormalizedCylinder : LREAL;
+	fControlOutputNormalizedWinch : LREAL;	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[fbManualControl(
+	eMode := G_VB.eMode,
+	eStatus := G_VB.eStatus,
+	stParam := G_Parameters.stParam,
+);
+
+IF (G_VB.eMode = E_Mode.Manual) AND (G_VB.eStatus = E_Status.Running) THEN
+	fControlOutputNormalizedCylinder := LIMIT(-1.0, fbManualControl.fControlOutputNormalizedCylinder, 1.0);
+	fControlOutputNormalizedWinch := LIMIT(-1.0, fbManualControl.fControlOutputNormalizedWinch, 1.0);
+ELSE
+	fControlOutputNormalizedCylinder := 0.0;
+	fControlOutputNormalizedWinch := 0.0;
+END_IF
+
+G_Work.fWinchControlInput := fControlOutputNormalizedWinch;
+G_Work.fCylControlInput := fControlOutputNormalizedCylinder;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -3,14 +3,36 @@
   <POU Name="FB_OpenLoopCylinderControl" Id="{fb5023f5-912a-4f83-9886-4b9733b36cee}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_OpenLoopCylinderControl
 VAR_INPUT
+	bEnable : BOOL;
+	fInput_ms : LREAL;
+	stParam : ST_Parameters;
 END_VAR
 VAR_OUTPUT
+	fNormalizedOutput : LREAL;
 END_VAR
 VAR
+	fFlowReference_m3s : LREAL; 
+	fM3sToLmin : LREAL := 60000;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF (fInput_ms >= 0.0) THEN
+	fFlowReference_m3s := stParam.stOpenLoopControlCylinderSettings.fBoreArea * fInput_ms;
+ELSE
+	fFlowReference_m3s := fInput_ms * stParam.stOpenLoopControlCylinderSettings.fAnnulusArea;
+END_IF
+
+IF (bEnable) THEN
+	fNormalizedOutput := (fM3sToLmin * fFlowReference_m3s) / stParam.stOpenLoopControlCylinderSettings.fMaxFlowCapacity;
+ELSE
+	fNormalizedOutput := 0.0;
+END_IF
+
+IF (fNormalizedOutput > 1.0) THEN
+	fNormalizedOutput := 1.0;
+ELSIF (fNormalizedOutput < -1.0) THEN
+	fNormalizedOutput := -1.0;
+END_IF; ]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

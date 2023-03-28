@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_FlowMeterInputScaling" Id="{61dd2fbe-893d-4847-be1e-4d35f8373c60}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_FlowMeterInputScaling
+VAR_INPUT
+	nRawInput : INT; 
+	stFlowMeterInputScaling : ST_FlowMeterInputScaling;
+END_VAR
+VAR_OUTPUT
+	fNormalizedOutput : LREAL;
+END_VAR
+VAR
+	fRawInput : LREAL; 
+	fTempInput : LREAL; 
+	fTempOutput : LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fRawInput := INT_TO_LREAL(nRawInput);
+
+fTempInput := fRawInput - stFlowMeterInputScaling.fNeutralInputValue;
+
+IF fTempInput > stFlowMeterInputScaling.fNeutralDeadband THEN 
+	fTempOutput := fTempInput/(stFlowMeterInputScaling.fMaxInputValue - stFlowMeterInputScaling.fNeutralInputValue);
+ELSIF fTempInput < -stFlowMeterInputScaling.fNeutralDeadband THEN
+	fTempOutput := fTempInput/(stFlowMeterInputScaling.fNeutralInputValue - stFlowMeterInputScaling.fMinInputValue);
+ELSE
+	fTempOutput := 0.0;
+END_IF
+
+fNormalizedOutput := LIMIT(stFlowMeterInputScaling.fMinOutputValue, fTempOutput*150.0, stFlowMeterInputScaling.fMaxOutputValue);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

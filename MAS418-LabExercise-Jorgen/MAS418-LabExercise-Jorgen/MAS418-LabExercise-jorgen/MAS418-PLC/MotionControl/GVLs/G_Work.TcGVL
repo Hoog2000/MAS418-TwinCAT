@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_Work" Id="{f3d7c52f-3d3c-42b3-8011-8b15a302a438}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	bManualMode : BOOL;
+	bAutoMode : BOOL;
+	bWinchEnable : BOOL;
+	bCylEnable : BOOL;
+	fWinchControlInput : LREAL; 
+	fWinchTime : LREAL;
+	fCylControlInput : LREAL;
+	fCylTime : LREAL;
+	fVelRefWinch : LREAL;
+	fPosRefWinch : LREAL;
+	fControlSignWinch : LREAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

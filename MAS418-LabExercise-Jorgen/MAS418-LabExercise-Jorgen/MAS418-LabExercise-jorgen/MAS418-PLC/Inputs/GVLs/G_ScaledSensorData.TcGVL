@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_ScaledSensorData" Id="{96e1725f-938e-4e18-abfe-fbba75aac843}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	fJoystickNormalizedY : LREAL;
+	fJoystickNormalizedX : LREAL;
+	fPositionCylPiston : LREAL;
+	fPressureSupply : LREAL; 
+	fPressureReturn : LREAL;
+	fPressureCyl_A_PistonSide : LREAL;
+	fPressureCyl_B_RodSide : LREAL; 
+	fPressureWinch_A_Input : LREAL;
+	fPressureWinch_A1_Input : LREAL;
+	fPressureWinch_B_Output : LREAL;
+	fPressureWinch_B1_Output : LREAL;
+	fPressureWinchDrain : LREAL;
+	fWinchEncoderPosition : LREAL;
+	fWinchWirePosition : LREAL;
+	fWinchFlow : LREAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

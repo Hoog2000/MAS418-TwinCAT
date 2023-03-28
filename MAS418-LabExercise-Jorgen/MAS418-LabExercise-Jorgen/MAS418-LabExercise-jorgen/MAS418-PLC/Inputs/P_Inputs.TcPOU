@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_Inputs" Id="{45e53283-bae4-4949-9360-db47dd76c58e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_Inputs
+VAR
+	fbJoystickWinch	: FB_JoystickInputScaling;
+	fbJoystickCyl : FB_JoystickInputScaling;
+	fbWinchPosition : FB_Encoder;
+	fbCylPistonPosition : FB_AnalogInputScaling;
+	fbPressureSupply : FB_AnalogInputScaling;
+	fbPressureReturn : FB_AnalogInputScaling;
+	fbPressureCyl_A_PistonSide : FB_AnalogInputScaling;
+	fbPressureCyl_B_RodSide : FB_AnalogInputScaling;
+	fbPressureWinch_A_Input : FB_AnalogInputScaling;
+	fbPressureWinch_A1_Input : FB_AnalogInputScaling;
+	fbPressureWinch_B_Output : FB_AnalogInputScaling;
+	fbPressureWinch_B1_Output : FB_AnalogInputScaling;
+	fbPressureWinchDrain : FB_AnalogInputScaling;
+	fbFlowWinch : FB_FlowMeterInputScaling;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbJoystickWinch(
+	bEnable := G_RawSensorData.bManualModeSelector,
+	nRawInput := G_RawSensorData.stJoyY.nValue,
+	stJoystickInputScaling := G_Parameters.stParam.stJoystickInputScalingY,
+	fNormalizedOutput => G_ScaledSensorData.fJoystickNormalizedY
+);
+fbJoystickCyl(
+	bEnable := G_RawSensorData.bManualModeSelector,
+	nRawInput := G_RawSensorData.stJoyX.nValue,
+	stJoystickInputScaling := G_Parameters.stParam.stJoystickInputScalingX,
+	fNormalizedOutput => G_ScaledSensorData.fJoystickNormalizedX
+);
+fbWinchPosition (
+nRawInput := G_RawSensorData.nEncoderValue, 
+fPosition => G_ScaledSensorData.fWinchEncoderPosition,
+);
+G_ScaledSensorData.fWinchWirePosition := fbWinchPosition.fPosition*G_Parameters.stParam.stOpenLoopControlWinchSettings.fWinchDrumScaling;
+fbCylPistonPosition(
+	nRawInput := G_RawSensorData.stPositionCylinder.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stCylPistonPositionScaling,
+	fOutput => G_ScaledSensorData.fPositionCylPiston
+);
+fbPressureSupply(
+	nRawInput := G_RawSensorData.stPressureSupply.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
+	fOutput => G_ScaledSensorData.fPressureSupply
+);
+fbPressureReturn(
+	nRawInput := G_RawSensorData.stPressureReturn.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling40bar,
+	fOutput => G_ScaledSensorData.fPressureReturn
+);
+fbPressureCyl_A_PistonSide(
+	nRawInput := G_RawSensorData.stPressureCyl_A_PistonSide.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
+	fOutput => G_ScaledSensorData.fPressureCyl_A_PistonSide
+);
+fbPressureCyl_B_RodSide(
+	nRawInput := G_RawSensorData.stPressureCyl_B_RodSide.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
+	fOutput => G_ScaledSensorData.fPressureCyl_B_RodSide
+);
+fbPressureWinch_A_Input(
+	nRawInput := G_RawSensorData.stPressureWinch_A_Input.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
+	fOutput => G_ScaledSensorData.fPressureWinch_A_Input
+);
+fbPressureWinch_A1_Input(
+	nRawInput := G_RawSensorData.stPressureWinch_A1_Input.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
+	fOutput => G_ScaledSensorData.fPressureWinch_A1_Input
+);
+fbPressureWinch_B_Output(
+	nRawInput := G_RawSensorData.stPressureWinch_B_Output.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
+	fOutput => G_ScaledSensorData.fPressureWinch_B_Output
+);
+fbPressureWinch_B1_Output(
+	nRawInput := G_RawSensorData.stPressureWinch_B1_Output.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling400bar,
+	fOutput => G_ScaledSensorData.fPressureWinch_B1_Output
+);
+fbPressureWinchDrain(
+	nRawInput := G_RawSensorData.stPressureWinchDrain.nValue,
+	stAnalogInputScaling := G_Parameters.stParam.stPressureSensorScaling40bar,
+	fOutput => G_ScaledSensorData.fPressureWinchDrain
+);
+fbFlowWinch(
+	nRawInput := G_RawSensorData.stFlowWinch.nValue,
+	stFlowMeterInputScaling := G_Parameters.stParam.stFlowMeterInputScaling,
+	fNormalizedOutput => G_ScaledSensorData.fWinchFlow
+);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

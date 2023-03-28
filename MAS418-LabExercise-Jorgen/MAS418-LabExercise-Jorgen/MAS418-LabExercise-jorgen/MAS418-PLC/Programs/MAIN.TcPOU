@@ -4,10 +4,14 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	fbModeSelector : FB_ModeSelector;	
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbModeSelector(bControlBox := TRUE);]]></ST>
+      <ST><![CDATA[fbModeSelector(bControlBox := TRUE);
+P_CraneControl();
+P_Inputs();
+P_Outputs();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

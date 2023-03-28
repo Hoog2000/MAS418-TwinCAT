@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_AnalogInputScaling" Id="{65aea867-9102-4c58-af74-b73b993f95e1}">
+    <Declaration><![CDATA[TYPE ST_AnalogInputScaling :
+STRUCT
+	fMaxInputValue : LREAL;
+	fMinInputValue : LREAL;
+	fMaxOutputValue : LREAL;
+	fMinOutputValue : LREAL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <GVL Name="G_Parameters" Id="{ce2e188f-b995-4eeb-a43c-5106c94f1d2b}">
+  <GVL Name="G_Outputs" Id="{678ea39b-1e41-4c00-a687-e80f05b2794d}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	stParam : ST_Parameters;
+	bGreenLED AT %Q* : BOOL;
+	bRedLED AT %Q* : BOOL;
+	
+	stWinchValveOutput : ST_ValveOutput;
+	stCylValveOutput : ST_ValveOutput;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

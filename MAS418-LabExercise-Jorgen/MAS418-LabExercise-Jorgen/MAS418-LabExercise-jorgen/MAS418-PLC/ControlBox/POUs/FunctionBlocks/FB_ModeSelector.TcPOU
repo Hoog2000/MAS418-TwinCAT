@@ -66,33 +66,33 @@ ELSIF (bControlBox) THEN
 			fbMode.Status(E_Status.Fault);
 			fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
 		ELSE
-			IF (G_Inputs.bOff) THEN
+			IF (G_RawSensorData.bOffModeSelector) THEN
 				fbMode.Mode(E_Mode.OFF);
 				fbMode.Status(E_Status.NotReady);
 				fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
-			ELSIF NOT(G_Inputs.bOff) AND (G_Inputs.bAuto) THEN
+			ELSIF (G_RawSensorData.bAutoModeSelector) THEN
 				fbMode.Mode(E_Mode.Auto);
 				fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
-					IF (G_Inputs.bStop) AND NOT(G_Inputs.bConfirmationStop) THEN
+					IF (G_RawSensorData.bStopButton) AND (G_RawSensorData.fFlowWinch > 1.0) AND (G_RawSensorData.fFlowWinch < -1.0) THEN
 						fbMode.Status(E_Status.Stoping);
-					ELSIF (G_Inputs.bStart) AND NOT(G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+					ELSIF (G_RawSensorData.bStartButton) AND (NOT(G_Outputs.stCylValveOutput.bEnable) OR NOT(G_Outputs.stWinchValveOutput.bEnable)) THEN
 						fbMode.Status(E_Status.Starting);
-					ELSIF (G_Inputs.bStart) AND (G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+					ELSIF (G_RawSensorData.bStartButton) AND (G_Outputs.stCylValveOutput.bEnable) AND (G_Outputs.stWinchValveOutput.bEnable) THEN
 						fbMode.Status(E_Status.Running);
 					ELSE
 						fbMode.Status(E_Status.Ready);
 					END_IF
-			ELSIF NOT(G_Inputs.bOff) AND NOT(G_Inputs.bAuto) THEN
+			ELSIF (G_RawSensorData.bManualModeSelector) THEN
 				fbMode.Mode(E_Mode.Manual);
-					IF (G_Inputs.bStop) AND NOT(G_Inputs.bConfirmationStop) THEN
+					IF (G_RawSensorData.bStopButton) AND (G_RawSensorData.fFlowWinch > 1.0) AND (G_RawSensorData.fFlowWinch < -1.0) THEN
 						fbMode.Status(E_Status.Stoping);
 						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
-					ELSIF (G_Inputs.bStart) AND NOT(G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+					ELSIF (G_RawSensorData.bStartButton) AND (NOT(G_Outputs.stCylValveOutput.bEnable) OR NOT(G_Outputs.stWinchValveOutput.bEnable)) THEN
 						fbMode.Status(E_Status.Starting);
 						fbMode.Joystick(bActive := FALSE, bSwitch := FALSE);
-					ELSIF (G_Inputs.bStart) AND (G_Inputs.bConfirmation) AND NOT(G_Inputs.bStop) THEN
+					ELSIF (G_RawSensorData.bStartButton) AND (G_Outputs.stCylValveOutput.bEnable) AND (G_Outputs.stWinchValveOutput.bEnable) THEN
 						fbMode.Status(E_Status.Running);
-						IF (G_Inputs.bTopSwitch) THEN
+						IF (G_RawSensorData.bJoystickEnable) THEN
 							fbMode.Joystick(bActive := TRUE, bSwitch := TRUE);
 						ELSE
 							fbMode.Joystick(bActive := TRUE, bSwitch := FALSE);

@@ -3,14 +3,22 @@
   <POU Name="FB_Joystick" Id="{243de92e-bef9-41b7-8569-8f7e3bf2002f}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Joystick
 VAR_INPUT
+	bEnable : BOOL;
+	fNormalizedInput : LREAL;
+	stParam : ST_Parameters;
 END_VAR
 VAR_OUTPUT
+	fOutput : LREAL;
 END_VAR
 VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF (bEnable) THEN
+	fOutput := fNormalizedInput*G_Parameters.stParam.fMaxVelocityLimit;
+ELSE
+	fOutput := 0.0;
+END_IF ]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

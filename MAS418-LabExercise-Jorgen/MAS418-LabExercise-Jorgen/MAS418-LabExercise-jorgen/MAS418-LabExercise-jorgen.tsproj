@@ -1,6 +1,108 @@
 <?xml version="1.0"?>
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35">
-	<Project ProjectGUID="{B39953D3-8446-42BA-BDFE-E564E7021C2B}" Target64Bit="true" ShowHideConfigurations="#x106">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}" AutoDeleteType="true">ST_AnalogInputStatus</Name>
+			<BitSize>16</BitSize>
+			<SubItem>
+				<Name>Underrange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Overrange</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Limit_1_0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Limit_1_1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Limit_2_0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Limit_2_1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reserved_0_7</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reserved_1_0</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reserved_1_1</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>9</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reserved_1_2</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>10</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reserved_1_3</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>11</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reserved_1_4</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>12</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Reserved_1_5</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>13</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TxPDO_State</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>14</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TxPDO_Toggle</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>15</BitOffs>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{B39953D3-8446-42BA-BDFE-E564E7021C2B}" Target64Bit="true" ShowHideConfigurations="#x146">
 		<System>
 			<Settings MaxCpus="6" NonWinCpus="3" Packages="2">
 				<Cpu CpuId="3"/>
@@ -13,9 +115,189 @@
 		</System>
 		<Plc>
 			<Project GUID="{153E256B-DC8E-42F9-8EE3-EB9D54E8A9A3}" Name="MAS418-PLC" PrjFilePath="MAS418-PLC\MAS418-PLC.plcproj" TmcFilePath="MAS418-PLC\MAS418-PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MAS418-PLC\MAS418-PLC.tmc" TmcHash="{1935DCE8-5917-CD06-2686-AE33C13B699A}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MAS418-PLC\MAS418-PLC.tmc" TmcHash="{522469C4-EB9D-ED20-BC0B-6CE0DF7AC312}">
 					<Name>MAS418-PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>G_RawSensorData.bManualModeSelector</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.bAutoModeSelector</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.bOffModeSelector</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.bStartButton</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.bStopButton</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.bJoystickEnable</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stJoyX.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stJoyX.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.fFlowWinch</Name>
+							<Type>LREAL</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stJoyY.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stJoyY.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPositionCylinder.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPositionCylinder.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.nEncoderValue</Name>
+							<Type>UDINT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureSupply.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureSupply.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureReturn.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureReturn.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureCyl_A_PistonSide.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureCyl_A_PistonSide.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureCyl_B_RodSide.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureCyl_B_RodSide.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_A_Input.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_A_Input.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_A1_Input.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_A1_Input.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_B_Output.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_B_Output.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_B1_Output.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinch_B1_Output.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinchDrain.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stPressureWinchDrain.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stFlowWinch.stStatus</Name>
+							<Type GUID="{BF7B45E0-618B-333C-936C-910E118FA8CB}">ST_AnalogInputStatus</Type>
+						</Var>
+						<Var>
+							<Name>G_RawSensorData.stFlowWinch.nValue</Name>
+							<Type>INT</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>G_Outputs.bGreenLED</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_Outputs.bRedLED</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_Outputs.stWinchValveOutput.bEnable</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_Outputs.stWinchValveOutput.nValveOutput</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>G_Outputs.stCylValveOutput.bEnable</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>G_Outputs.stCylValveOutput.nValveOutput</Name>
+							<Type>INT</Type>
+						</Var>
+					</Vars>
+					<UnrestoredVarLinks ImportTime="2023-03-28T17:43:17">
+						<OwnerA Name="OutputSrc" Prefix="TIPC^MAS418-PLC^MAS418-PLC Instance" Type="2">
+							<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 3 (EL2008)">
+								<Link VarA="G_RawSensorData.bGreenLED" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 1^Output" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="G_RawSensorData.bRedLED" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 2^Output" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="G_RawSensorData.bValveEnableCyl" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 4^Output" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="G_RawSensorData.bValveEnableWinch" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Channel 3^Output" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+							<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 8 (EL4104)">
+								<Link VarA="G_RawSensorData.nValveOutputCyl" TypeA="INT" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="AO Output Channel 2^Analog output" RestoreInfo="ANotFound"/>
+								<Link VarA="G_RawSensorData.nValveOutputWinch" TypeA="INT" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="AO Output Channel 1^Analog output" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
 							<Id NeedCalleeCall="true">0</Id>
@@ -33,5 +315,24 @@
 				</Instance>
 			</Project>
 		</Plc>
+		<Io>
+			<Device File="Device 4 (EtherCAT).xti" Id="4"/>
+		</Io>
 	</Project>
+	<Mappings>
+		<OwnerA Name="TIPC^MAS418-PLC^MAS418-PLC Instance">
+			<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 2 (EL1008)">
+				<Link VarA="PlcTask Inputs^G_RawSensorData.bAutoModeSelector" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^G_RawSensorData.bJoystickEnable" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask Inputs^G_RawSensorData.bManualModeSelector" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^G_RawSensorData.bStartButton" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^G_RawSensorData.bStopButton" VarB="Channel 4^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 7 (EL3255)">
+				<Link VarA="PlcTask Inputs^G_RawSensorData.stJoyX.nValue" VarB="AI Standard Channel 2^Value"/>
+				<Link VarA="PlcTask Inputs^G_RawSensorData.stJoyY.nValue" VarB="AI Standard Channel 3^Value"/>
+				<Link VarA="PlcTask Inputs^G_RawSensorData.stPositionCylinder.nValue" VarB="AI Standard Channel 1^Value"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
 </TcSmProject>

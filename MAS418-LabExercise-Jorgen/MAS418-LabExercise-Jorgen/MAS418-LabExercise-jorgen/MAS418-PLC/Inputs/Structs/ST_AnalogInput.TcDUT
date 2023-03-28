@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_AnalogInput" Id="{750991c1-d16e-4965-8e5a-588c706a1ec2}">
+    <Declaration><![CDATA[TYPE ST_AnalogInput :
+STRUCT
+	stStatus AT %I* : ST_AnalogInputStatus;
+	nValue AT %I* : INT;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

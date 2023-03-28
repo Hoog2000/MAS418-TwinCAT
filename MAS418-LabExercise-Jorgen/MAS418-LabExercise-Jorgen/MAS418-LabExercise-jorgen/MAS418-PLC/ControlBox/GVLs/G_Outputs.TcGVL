@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <GVL Name="G_Outputs" Id="{336e4417-bcc6-4cf5-be39-792bee9fdc47}">
-    <Declaration><![CDATA[VAR_GLOBAL
-	fWinchValve : LREAL;
-	fCylinderValve : LREAL;
-END_VAR]]></Declaration>
-  </GVL>
-</TcPlcObject>
