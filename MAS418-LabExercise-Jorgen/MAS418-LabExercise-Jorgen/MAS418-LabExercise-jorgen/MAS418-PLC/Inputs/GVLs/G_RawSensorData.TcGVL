@@ -5,7 +5,6 @@
 VAR_GLOBAL
 	bManualModeSelector	AT %I* : BOOL;
 	bAutoModeSelector AT %I* : BOOL;
-	bOffModeSelector AT %I* : BOOL;
 	bStartButton AT %I* : BOOL;
 	bStopButton AT %I* : BOOL;
 	bJoystickEnable AT %I* : BOOL;

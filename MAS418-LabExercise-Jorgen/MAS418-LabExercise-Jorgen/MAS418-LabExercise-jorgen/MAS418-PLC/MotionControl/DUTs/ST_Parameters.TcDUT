@@ -4,14 +4,15 @@
     <Declaration><![CDATA[TYPE ST_Parameters :
 STRUCT
 	fCyclicTime : LREAL := 0.01;
-	fMaxVelocityLimit : LREAL := 0.05;
+	fMaxVelocityLimit : LREAL := 0.01;
+	fMaxWinchVelocity : LREAL := 0.01; // [rad/s]
 	stOpenLoopControlCylinderSettings : ST_OpenLoopControlCylinderSettings;
 	stOpenLoopControlWinchSettings : ST_OpenLoopControlWinchSettings;
 	fEncoderOffset : LREAL := 17574.8; 
 	bDeadBandCompOn : BOOL := TRUE;
 	stWinchValveDeadBand : ST_ValveDeadBand := (fPosMax := 29490.0, fPosMin := 20950.0, fNegMin := 18250.0, fNegMax := 9830.0);
 	stCylValveDeadBand 	: ST_ValveDeadBand := (fPosMax := 29490.0, fPosMin := 20950.0, fNegMin := 18250.0, fNegMax := 9830.0);
-	stJoystickInputScalingY	: ST_JoystickInputScaling := (fMaxInputValue := 20509.0, fMinInputValue := 11787.0, fNeutralInputValue := 16175, fNeutralDeadband := 50.0, fMaxOutputValue := 1.0, fMinOutputValue := -1.0, fNeutralOutputValue := 0.0);
+	stJoystickInputScalingY	: ST_JoystickInputScaling := (fMaxInputValue := 20546.5, fMinInputValue := 12124.5, fNeutralInputValue := 16620, fNeutralDeadband := 50.0, fMaxOutputValue := 1.0, fMinOutputValue := -1.0, fNeutralOutputValue := 0.0);
 	stJoystickInputScalingX	: ST_JoystickInputScaling := (fMaxInputValue := 20509.0, fMinInputValue := 11787.0, fNeutralInputValue := 16175, fNeutralDeadband := 50.0, fMaxOutputValue := 1.0, fMinOutputValue := -1.0, fNeutralOutputValue := 0.0);
 	stCylPistonPositionScaling : ST_AnalogInputScaling := (fMaxInputValue := 32295.0, fMinInputValue := 229.0, fMaxOutputValue := 0.5, fMinOutputValue := 0.0);
 	stPressureSensorScaling400bar : ST_AnalogInputScaling := (fMaxInputValue := 32767.0, fMinInputValue := 0.0, fMaxOutputValue := 400.0, fMinOutputValue := 0.0);

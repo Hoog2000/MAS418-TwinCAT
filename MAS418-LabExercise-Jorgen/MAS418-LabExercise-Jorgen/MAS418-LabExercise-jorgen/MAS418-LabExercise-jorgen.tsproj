@@ -102,20 +102,20 @@
 			</SubItem>
 		</DataType>
 	</DataTypes>
-	<Project ProjectGUID="{B39953D3-8446-42BA-BDFE-E564E7021C2B}" Target64Bit="true" ShowHideConfigurations="#x146">
+	<Project ProjectGUID="{B39953D3-8446-42BA-BDFE-E564E7021C2B}" TargetNetId="5.80.90.242.1.1" Target64Bit="true" ShowHideConfigurations="#x146">
 		<System>
 			<Settings MaxCpus="6" NonWinCpus="3" Packages="2">
 				<Cpu CpuId="3"/>
 			</Settings>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+				<Task Id="4" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
 		</System>
 		<Plc>
 			<Project GUID="{153E256B-DC8E-42F9-8EE3-EB9D54E8A9A3}" Name="MAS418-PLC" PrjFilePath="MAS418-PLC\MAS418-PLC.plcproj" TmcFilePath="MAS418-PLC\MAS418-PLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MAS418-PLC\MAS418-PLC.tmc" TmcHash="{522469C4-EB9D-ED20-BC0B-6CE0DF7AC312}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MAS418-PLC\MAS418-PLC.tmc" TmcHash="{438181E8-6A02-B8B3-01BF-393FD6FA95AD}">
 					<Name>MAS418-PLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
@@ -126,10 +126,6 @@
 						</Var>
 						<Var>
 							<Name>G_RawSensorData.bAutoModeSelector</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>G_RawSensorData.bOffModeSelector</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -303,23 +299,25 @@
 							<Id NeedCalleeCall="true">0</Id>
 							<Name>PlcTask</Name>
 							<ManualConfig>
-								<OTCID>#x02010030</OTCID>
+								<OTCID>#x02010040</OTCID>
 							</ManualConfig>
 							<Priority>20</Priority>
 							<CycleTime>10000000</CycleTime>
 						</Context>
 					</Contexts>
 					<TaskPouOids>
-						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+						<TaskPouOid Prio="20" OTCID="#x08502002"/>
 					</TaskPouOids>
 				</Instance>
 			</Project>
 		</Plc>
 		<Io>
 			<Device File="Device 4 (EtherCAT).xti" Id="4"/>
+			<Device File="Device 2 (EtherCAT Automation Protocol).xti" Id="2"/>
 		</Io>
 	</Project>
 	<Mappings>
+		<MappingInfo Identifier="{00000000-2002-0850-0020-500840000403}" Id="#x02030010"/>
 		<OwnerA Name="TIPC^MAS418-PLC^MAS418-PLC Instance">
 			<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 2 (EL1008)">
 				<Link VarA="PlcTask Inputs^G_RawSensorData.bAutoModeSelector" VarB="Channel 2^Input"/>
@@ -328,10 +326,20 @@
 				<Link VarA="PlcTask Inputs^G_RawSensorData.bStartButton" VarB="Channel 3^Input"/>
 				<Link VarA="PlcTask Inputs^G_RawSensorData.bStopButton" VarB="Channel 4^Input"/>
 			</OwnerB>
+			<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 3 (EL2008)">
+				<Link VarA="PlcTask Outputs^G_Outputs.bGreenLED" VarB="Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^G_Outputs.bRedLED" VarB="Channel 2^Output"/>
+				<Link VarA="PlcTask Outputs^G_Outputs.stCylValveOutput.bEnable" VarB="Channel 4^Output"/>
+				<Link VarA="PlcTask Outputs^G_Outputs.stWinchValveOutput.bEnable" VarB="Channel 3^Output"/>
+			</OwnerB>
 			<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 7 (EL3255)">
 				<Link VarA="PlcTask Inputs^G_RawSensorData.stJoyX.nValue" VarB="AI Standard Channel 2^Value"/>
 				<Link VarA="PlcTask Inputs^G_RawSensorData.stJoyY.nValue" VarB="AI Standard Channel 3^Value"/>
 				<Link VarA="PlcTask Inputs^G_RawSensorData.stPositionCylinder.nValue" VarB="AI Standard Channel 1^Value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 4 (EtherCAT)^Term 1 (EK1100)^Term 8 (EL4104)">
+				<Link VarA="PlcTask Outputs^G_Outputs.stCylValveOutput.nValveOutput" VarB="AO Output Channel 2^Analog output"/>
+				<Link VarA="PlcTask Outputs^G_Outputs.stWinchValveOutput.nValveOutput" VarB="AO Output Channel 1^Analog output"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

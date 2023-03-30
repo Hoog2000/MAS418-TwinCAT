@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.35" ClassName="CDevEthernetProtocolNvDef" SubType="112">
+	<Device Id="2" DevType="112" AmsPort="28674" AmsNetId="5.80.90.242.3.1" RemoteName="Device 2 (EtherCAT Automation Protocol)">
+		<Name>__FILENAME__</Name>
+		<AddressInfo>
+			<Pnp>
+				<DeviceDesc>X001 (X001)</DeviceDesc>
+				<DeviceName>\DEVICE\{38288AE8-A773-4FD5-9C36-1B6B73348232}</DeviceName>
+				<DeviceData>000105505af2</DeviceData>
+			</Pnp>
+		</AddressInfo>
+		<Image Id="3" AddrType="1" ImageType="3">
+			<Name>Image</Name>
+		</Image>
+		<Ethernet DeviceDesc="X001 (X001)"/>
+		<Eap EapDeviceGuid="{3F7D02F3-49AB-4FA4-B8A1-0174B047F5A3}"/>
+	</Device>
+</TcSmItem>

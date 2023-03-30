@@ -4,7 +4,7 @@
     <Declaration><![CDATA[FUNCTION_BLOCK FB_OpenLoopWinchControl
 VAR_INPUT
 	bEnable : BOOL; 
-	FInput_ms : LREAL;
+	fInput_ms : LREAL;
 	stParam : ST_Parameters; 
 END_VAR
 VAR_OUTPUT
@@ -16,7 +16,13 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fFlowReference_m3s := stParam.stOpenLoopControlWinchSettings.fWinchDisplacement * 1000000 * fInput_ms / stParam.stOpenLoopControlWinchSettings.fGearBox;
+      <ST><![CDATA[//fRads := (fInput_ms/fLin_m_ToRot_deg_Scaling)*3.14/180;
+//fFlowReference_lmin := (fDisplacment_cc*(fRads/(2*3.14)*60))/1000;
+//fFlowReference_lmin := (fDisplacment_cc*1E-5*fRads/(2*3.14))*60000;
+
+
+
+fFlowReference_m3s := (stParam.stOpenLoopControlWinchSettings.fWinchDisplacement / 1000 * fInput_ms);
 
 
 IF (bEnable) THEN

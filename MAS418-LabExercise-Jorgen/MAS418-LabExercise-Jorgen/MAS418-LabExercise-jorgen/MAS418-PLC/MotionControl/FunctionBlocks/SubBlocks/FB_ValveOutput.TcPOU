@@ -39,10 +39,10 @@ ELSE
 END_IF	
 IF bEnable THEN
 	nOutput := LIMIT(nMinValue, nTempOutput, nMaxValue);
-	bEnableValveOutput := TRUE; 
+	//bEnableValveOutput := TRUE; 
 ELSE 	
 	nOutput := nOffset;
-	bEnableValveOutput := FALSE;	
+	//bEnableValveOutput := FALSE;	
 END_IF]]></ST>
     </Implementation>
   </POU>

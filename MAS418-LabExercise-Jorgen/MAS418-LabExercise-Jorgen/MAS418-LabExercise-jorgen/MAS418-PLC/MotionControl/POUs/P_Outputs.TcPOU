@@ -25,13 +25,19 @@ fbCylValveOutput(
 	fNormalizedInput := G_Work.fCylControlInput,
 	nOutput => G_Outputs.stCylValveOutput.nValveOutput
 );
-
-IF (G_VB.eStatus = E_Status.Running) THEN
+IF (G_VB.eStatus = E_Status.Starting) THEN
+	//G_Outputs.stCylValveOutput.bEnable := TRUE;
+	//G_Outputs.stWinchValveOutput.bEnable := TRUE;
+ELSIF (G_VB.eStatus = E_Status.Running) THEN
 	G_Outputs.bGreenLED := TRUE;
 	G_Outputs.bRedLED := FALSE;
+	G_Outputs.stCylValveOutput.bEnable := TRUE;
+	G_Outputs.stWinchValveOutput.bEnable := TRUE;
 ELSIF (G_VB.eStatus = E_Status.Fault) OR (G_VB.eStatus = E_Status.Stoping) THEN
 	G_Outputs.bRedLED := TRUE;
 	G_Outputs.bGreenLED := FALSE;
+	G_Outputs.stCylValveOutput.bEnable := FALSE;
+	G_Outputs.stWinchValveOutput.bEnable := FALSE;
 ELSE
 	G_Outputs.bRedLED := FALSE;
 	G_Outputs.bGreenLED := FALSE;
