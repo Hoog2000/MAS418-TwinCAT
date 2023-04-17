@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_ThetaBoom" Id="{21eb206a-4356-42ca-81f9-592d51a8b5a0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ThetaBoom
+VAR_INPUT
+	xCylm: LREAL;
+END_VAR
+VAR_OUTPUT
+	thetaBoom: LREAL;
+END_VAR
+VAR
+	a: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* MATLAB Function: '<Root>/CylinderDiscplacementToBoomAngle' *)
+(* Geomtry Constants *)
+(* MATLAB Function 'CylinderDiscplacementToBoomAngle': '<S1>:1' *)
+(* '<S1>:1:4' ABx = 0.427; *)
+(* '<S1>:1:5' ABy = 1.057; *)
+(* '<S1>:1:6' ACx = 0.49484; *)
+(* '<S1>:1:7' ACy = 0.133; *)
+(* '<S1>:1:9' AB = sqrt(abs(ABx)^2 + abs(ABy)^2); *)
+(* '<S1>:1:10' AC = sqrt(abs(ACx)^2 + abs(ACy)^2); *)
+(* '<S1>:1:12' BC = 0.77222 + xCyl; *)
+(* '<S1>:1:14' alpha1 = atand(abs(ACy)/abs(ACx)); *)
+(* '<S1>:1:15' alpha2 = atand(abs(ABy)/abs(ABx)); *)
+(* '<S1>:1:17' theta1 = acosd( (abs(AB)^2 + abs(AC)^2 - (abs(BC))^2) / (2 * abs(AB) * abs(AC)) ) - alpha2 + alpha1; *)
+a := ABS(xCylm + 0.77222);
+(* Outport: '<Root>/thetaBoom' incorporates:
+ *  MATLAB Function: '<Root>/CylinderDiscplacementToBoomAngle' *)
+(* '<S1>:1:19' thetaBoom = theta1; *)
+thetaBoom := ((ACOS((1.5621336256 - (a * a)) / 1.1682662621269122) * 57.295779513082323) - 68.00259659335785) + 15.044069585156381;
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -6,7 +6,8 @@
 TYPE E_Status :
 (
 	Ready,
-	NotReady
+	NotReady,
+	Running
 );
 END_TYPE]]></Declaration>
   </DUT>

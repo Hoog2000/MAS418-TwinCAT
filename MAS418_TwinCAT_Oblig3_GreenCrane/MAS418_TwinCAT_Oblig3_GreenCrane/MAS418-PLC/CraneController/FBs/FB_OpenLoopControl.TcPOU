@@ -46,9 +46,7 @@ ELSE
 END_IF;
 
 (* End of Switch: '<S1>/Switch1' *)
-(* End of Outputs for SubSystem: '<Root>/FB_OpenLoopControl' *)
-
-]]></ST>
+(* End of Outputs for SubSystem: '<Root>/FB_OpenLoopControl' *)]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -8,6 +8,7 @@ VAR_OUTPUT
 END_VAR
 VAR
 	fbMotionSelector : FB_MotionRefSelector;
+	fbThetaBoom : FB_ThetaBoom;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -18,7 +19,10 @@ END_VAR
 		G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart := FALSE;
 	ELSE  
 		G_ControllerGreenCrane.eMode := E_Mode.Manual;
-		G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart;		
+		G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart;
+		IF (G_ControllerGreenCrane.bStart) THEN
+			G_ControllerGreenCrane.eStatus := E_Status.Running;
+		END_IF		
 	END_IF
 ELSE
 	G_ControllerGreenCrane.bStart := G_ControllerGreenCrane.bLamp := FALSE;
@@ -36,7 +40,9 @@ ELSE
 	G_ControllerGreenCrane.fTimer := 0.0;
 END_IF
 
-fbMotionSelector();]]></ST>
+
+fbMotionSelector(Auto1Man0 := G_ControllerGreenCrane.bMode, xCylRefGenm := 0, vCylRefGenm := 0, vCylJoyms := G_ControllerGreenCrane.fVelRef);
+fbThetaBoom(xCylm := G_CylinderState.xm, thetaBoom => G_CylinderState.thetaBoom);]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -6,8 +6,28 @@
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" cet="TextListRow">
             <o>
+              <v n="TextID">"62"</v>
+              <v n="TextDefault">"%0.001f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"602"</v>
+              <v n="TextDefault">"%0.01f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"556"</v>
+              <v n="TextDefault">"%0.11f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"529"</v>
               <v n="TextDefault">"%0.1f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"399"</v>
+              <v n="TextDefault">"%0.2f"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -31,8 +51,18 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"679"</v>
+              <v n="TextDefault">"100% accurate Angle, (smart match here)"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"591"</v>
               <v n="TextDefault">"Auto"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"675"</v>
+              <v n="TextDefault">"Boom Angle: %0.1f [deg]"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -43,6 +73,26 @@
             <o>
               <v n="TextID">"500"</v>
               <v n="TextDefault">"ControllerGreenCrane"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"350"</v>
+              <v n="TextDefault">"Cylinder Position: %f  [m/s]"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"494"</v>
+              <v n="TextDefault">"Cylinder Position: %f  [m]"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"186"</v>
+              <v n="TextDefault">"Cylinder Velocity Reference:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"639"</v>
+              <v n="TextDefault">"Cylinder Velocity: %f  [m/s]"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -68,6 +118,26 @@
             <o>
               <v n="TextID">"252"</v>
               <v n="TextDefault">"Mode: %s"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"280"</v>
+              <v n="TextDefault">"ppBar: %0.1f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"67"</v>
+              <v n="TextDefault">"ppBar: %0.1f	prBar: %0.1f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"927"</v>
+              <v n="TextDefault">"ppBar: %0.1f [bar]"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"96"</v>
+              <v n="TextDefault">"prBar: %0.1f [bar]"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

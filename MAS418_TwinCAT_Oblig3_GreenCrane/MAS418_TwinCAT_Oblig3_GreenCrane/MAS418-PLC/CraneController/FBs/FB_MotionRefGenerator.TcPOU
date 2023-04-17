@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <POU Name="RampMotionProfileGenerator" Id="{1a1d2b74-0948-412a-aa3e-2388d67549ca}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK RampMotionProfileGenerator
+  <POU Name="FB_MotionRefGenerator" Id="{1a1d2b74-0948-412a-aa3e-2388d67549ca}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_MotionRefGenerator
 VAR_INPUT
 	Enable: BOOL;
 	x0m: LREAL;

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_CylinderState" Id="{a6e9ddcb-d9a5-4ee4-9378-ed754905ee20}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	xm: LREAL;
+	ppbar: LREAL;
+	prbar: LREAL;
+	thetaBoom: LREAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

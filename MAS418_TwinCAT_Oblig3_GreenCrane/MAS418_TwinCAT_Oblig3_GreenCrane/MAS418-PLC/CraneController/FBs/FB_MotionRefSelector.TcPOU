@@ -9,57 +9,20 @@ VAR_INPUT
 	vCylJoyms: LREAL;
 END_VAR
 VAR_OUTPUT
-	VFFEnable: BOOL;
-	PFCEnable: BOOL;
-	vCylRefms: LREAL;
-	xCylRefm: LREAL;
+
 END_VAR
 VAR
-	rtb_PFC: DINT;
+	fbOpenLoopControl : FB_OpenLoopControl;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-(* Outputs for Atomic SubSystem: '<Root>/MotionRefSelector' *)
-(* MATLAB Function: '<S1>/MATLAB Function' *)
-(* MATLAB Function 'MotionRefSelector/MATLAB Function': '<S2>:1' *)
-(* '<S2>:1:2' if AutoMode == 1 *)
-
-IF Auto1Man0 THEN 
-    (* Outport: '<Root>/vCylRef [m//s]' *)
-    (* '<S2>:1:3' VelRef = VelRefAuto; *)
-    vCylRefms := vCylRefGenm;
-    (* Outport: '<Root>/xCylRef [m]' *)
-    (* '<S2>:1:4' PosRef = PosRefAuto; *)
-    xCylRefm := xCylRefGenm;
-    (* '<S2>:1:5' VFF = 1; *)
-    (* '<S2>:1:6' PFC = 1; *)
-    rtb_PFC := 1;
+      <ST><![CDATA[IF NOT(G_ControllerGreenCrane.eStatus = E_Status.Running) THEN 
+	fbOpenLoopControl(bEnable := FALSE, fVelocityReference_ms := vCylJoyms, fMaxValveFlow_lmin := 19, fVelocityFeedForward => G_ControllerGreenCrane.fGain);
+ELSIF NOT(Auto1Man0) THEN
+    fbOpenLoopControl(bEnable := TRUE, fVelocityReference_ms := vCylJoyms, fMaxValveFlow_lmin := 19, fVelocityFeedForward => G_ControllerGreenCrane.fGain);
 ELSE 
-    (* Outport: '<Root>/vCylRef [m//s]' *)
-    (* '<S2>:1:7' else *)
-    (* '<S2>:1:8' VelRef = VelRefMan; *)
-    vCylRefms := vCylJoyms;
-    (* Outport: '<Root>/xCylRef [m]' *)
-    (* '<S2>:1:9' PosRef = 0.0; *)
-    xCylRefm := 0.0;
-    (* '<S2>:1:10' VFF = 1; *)
-    (* '<S2>:1:11' PFC = 0; *)
-    rtb_PFC := 0;
-END_IF;
-
-(* End of MATLAB Function: '<S1>/MATLAB Function' *)
-
-
-(* Outport: '<Root>/VFF Enable' incorporates:
- *  DataTypeConversion: '<S1>/Data Type Conversion1' *)
-VFFEnable := TRUE;
-(* Outport: '<Root>/PFC Enable' incorporates:
- *  DataTypeConversion: '<S1>/Data Type Conversion' *)
-PFCEnable := rtb_PFC <> 0;
-(* End of Outputs for SubSystem: '<Root>/MotionRefSelector' *)
-
-]]></ST>
+	fbOpenLoopControl(bEnable := FALSE, fVelocityReference_ms := vCylJoyms, fMaxValveFlow_lmin := 19, fVelocityFeedForward => G_ControllerGreenCrane.fGain); //This will be Auto
+END_IF;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

@@ -3,11 +3,15 @@
   <POU Name="P_Simulator" Id="{69a5ea0e-a80a-469e-8779-8c812155d521}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_Simulator
 VAR
-	
+	fbCraneSimulator : FB_CraneSimulator;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[IF (G_ControllerGreenCrane.fTimer = 0.0) THEN 
+	fbCraneSimulator(ssMethodType := 0, uDCV := G_ControllerGreenCrane.fGain, xm => G_CylinderState.xm, ppbar => G_CylinderState.ppbar, prbar => G_CylinderState.prbar);
+ELSE 
+	fbCraneSimulator(ssMethodType := 1, uDCV := G_ControllerGreenCrane.fGain, xm => G_CylinderState.xm, ppbar => G_CylinderState.ppbar, prbar => G_CylinderState.prbar);
+END_IF]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

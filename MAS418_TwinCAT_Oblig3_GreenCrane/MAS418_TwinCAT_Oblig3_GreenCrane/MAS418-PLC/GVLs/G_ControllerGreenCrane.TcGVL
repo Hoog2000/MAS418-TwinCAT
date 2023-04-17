@@ -7,9 +7,11 @@ VAR_GLOBAL
 	bMode : BOOL;
 	bStart : BOOL := FALSE;
 	bLamp : BOOL := FALSE;
+	fVelRef : REAL;
 	fTimer : REAL := 0.0;
 	eMode : E_Mode;
 	eStatus : E_Status;
+	fGain : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
