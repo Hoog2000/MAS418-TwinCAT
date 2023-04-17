@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_ControllerGreenCrane" Id="{22cffb37-296d-4f29-882a-b64552c56996}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	bEnable : BOOL;
+	bMode : BOOL;
+	bStart : BOOL := FALSE;
+	bLamp : BOOL := FALSE;
+	fTimer : REAL := 0.0;
+	eMode : E_Mode;
+	eStatus : E_Status;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

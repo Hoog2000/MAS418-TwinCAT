@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="RampMotionProfileGenerator" Id="{1a1d2b74-0948-412a-aa3e-2388d67549ca}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK RampMotionProfileGenerator
+VAR_INPUT
+	Enable: BOOL;
+	x0m: LREAL;
+	v0ms: LREAL;
+	Position_SPm: LREAL;
+	Velocity_SPms: LREAL;
+	t0s: LREAL;
+	tRamps: LREAL;
+	tHoldPoss: LREAL;
+	SimulationTimes: LREAL;
+END_VAR
+VAR_OUTPUT
+	PositionRefm: LREAL;
+	VelocityRefms: LREAL;
+END_VAR
+VAR
+	Error: DINT;
+	slopeExt: LREAL;
+	tHold: LREAL;
+	x1: LREAL;
+	x4: LREAL;
+	rtb_Saturation3: LREAL;
+	x1_tmp: LREAL;
+	x1_tmp_tmp: LREAL;
+	x4_tmp: LREAL;
+	x4_tmp_tmp: LREAL;
+	x4_tmp_tmp_0: LREAL;
+	x1_tmp_0: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+(* Outputs for Atomic SubSystem: '<Root>/RampMotionProfileGenerator' *)
+(* Saturate: '<S1>/Saturation3' *)
+
+IF Position_SPm > 0.5 THEN 
+    rtb_Saturation3 := 0.5;
+ELSIF Position_SPm >= 0.0 THEN 
+    rtb_Saturation3 := Position_SPm;
+ELSE 
+    rtb_Saturation3 := 0.0;
+END_IF;
+
+(* End of Saturate: '<S1>/Saturation3' *)
+
+
+(* Saturate: '<S1>/Saturation2' *)
+
+IF Velocity_SPms > 0.12 THEN 
+    PositionRefm := 0.12;
+ELSIF Velocity_SPms >= 0.0 THEN 
+    PositionRefm := Velocity_SPms;
+ELSE 
+    PositionRefm := 0.0;
+END_IF;
+
+(* End of Saturate: '<S1>/Saturation2' *)
+
+
+(* MATLAB Function: '<S1>/RampSignal' *)
+(* MATLAB Function 'RampMotionProfileGenerator/RampSignal': '<S2>:1' *)
+(* '<S2>:1:2' x_SP = x_ref - x0; *)
+(* '<S2>:1:3' vs=v_ref; *)
+(* '<S2>:1:4' slopeExt=v0-vs; *)
+slopeExt := v0ms - PositionRefm;
+(* '<S2>:1:5' slopeRetr=-vs-v0; *)
+(* '<S2>:1:7' as = vs/tRamp; *)
+(* '<S2>:1:8' s_acc=(vs^2-v0^2)/as; *)
+(* '<S2>:1:10' tHold=(x_SP-s_acc)/vs; *)
+tHold := ((rtb_Saturation3 - x0m) - (((PositionRefm * PositionRefm) - (v0ms * v0ms)) / (PositionRefm / tRamps))) / PositionRefm;
+(* '<S2>:1:12' if tHold < 0 *)
+
+IF tHold < 0.0 THEN 
+    (* '<S2>:1:13' Error = 1; *)
+    Error := 1;
+ELSE 
+    (* '<S2>:1:14' else *)
+    (* '<S2>:1:15' Error = 0; *)
+    Error := 0;
+END_IF;
+
+(* '<S2>:1:18' t1=tRamp; *)
+(* '<S2>:1:19' t2=tHold; *)
+(* '<S2>:1:20' t3=tRamp; *)
+(* '<S2>:1:21' t4=tWait; *)
+(* '<S2>:1:22' t5=t1; *)
+(* '<S2>:1:23' t6=t2; *)
+(* '<S2>:1:24' t7=t3; *)
+(* '<S2>:1:26' x1 = x0 + v0*((t0+t1)-t0)-(slopeExt/t1)*((t0+t1)-t0)^2/2; *)
+x1_tmp_tmp := t0s + tRamps;
+x1_tmp := x1_tmp_tmp - t0s;
+x1_tmp_0 := slopeExt / tRamps;
+x1 := ((x1_tmp * v0ms) + x0m) - ((x1_tmp_0 * (x1_tmp * x1_tmp)) / 2.0);
+(* '<S2>:1:27' x2 = x1 + vs*((t0+t1+t2)-(t0+t1)); *)
+(* '<S2>:1:28' x4 = x_ref - v0*((t0+t1+t2+t3+t4+t5)-(t0+t1+t2+t3+t4))+(slopeRetr/t5)*((t0+t1+t2+t3+t4+t5)-(t0+t1+t2+t3+t4))^2/2; *)
+x4_tmp_tmp := x1_tmp_tmp + tHold;
+x4_tmp_tmp_0 := x4_tmp_tmp + tRamps;
+x4_tmp := x4_tmp_tmp_0 + tHoldPoss;
+x4 := (x4_tmp + tRamps) - x4_tmp;
+x1_tmp := (( -PositionRefm) - v0ms) / tRamps;
+x4 := (rtb_Saturation3 - (x4 * v0ms)) + ((x1_tmp * (x4 * x4)) / 2.0);
+(* '<S2>:1:29' x5 = x4-vs*((t0+t1+t2+t3+t4+t5+t6)-(t0+t1+t2+t3+t4+t5)); *)
+(* '<S2>:1:31' if Error == 1 *)
+
+IF Error = 1 THEN 
+    (* '<S2>:1:32' x = x0; *)
+    rtb_Saturation3 := x0m;
+    (* '<S2>:1:33' v = v0; *)
+    PositionRefm := v0ms;
+ELSIF (SimulationTimes >= 0.0) AND (SimulationTimes < t0s) THEN 
+    (* '<S2>:1:34' elseif t>=0 && t<t0 *)
+    (* '<S2>:1:35' x = x0; *)
+    rtb_Saturation3 := x0m;
+    (* '<S2>:1:36' v = v0; *)
+    PositionRefm := v0ms;
+ELSIF (SimulationTimes >= t0s) AND (SimulationTimes < x1_tmp_tmp) THEN 
+    (* '<S2>:1:37' elseif t>=t0 && t<(t0+t1) *)
+    (* '<S2>:1:38' x = x0 + v0*(t-t0)-(slopeExt/t1)*(t-t0)^2/2; *)
+    x1_tmp := SimulationTimes - t0s;
+    rtb_Saturation3 := ((x1_tmp * v0ms) + x0m) - ((x1_tmp_0 * (x1_tmp * x1_tmp)) / 2.0);
+    (* '<S2>:1:39' v = v0-(slopeExt/t1)*(t-t0); *)
+    PositionRefm := v0ms - (x1_tmp_0 * x1_tmp);
+ELSIF (SimulationTimes >= x1_tmp_tmp) AND (SimulationTimes < x4_tmp_tmp) THEN 
+    (* '<S2>:1:40' elseif t>=(t0+t1) && t<(t0+t1+t2) *)
+    (* '<S2>:1:41' x = x1 + vs*(t-(t0+t1)); *)
+    rtb_Saturation3 := ((SimulationTimes - x1_tmp_tmp) * PositionRefm) + x1;
+    (* '<S2>:1:42' v = vs; *)
+ELSIF (SimulationTimes >= x4_tmp_tmp) AND (SimulationTimes < x4_tmp_tmp_0) THEN 
+    (* '<S2>:1:43' elseif t>=(t0+t1+t2) && t<(t0+t1+t2+t3) *)
+    (* '<S2>:1:44' x = x2+vs*(t-(t0+t1+t2))+(slopeExt/t3)*(t-(t0+t1+t2))^2/2; *)
+    tHold := (t0s + tRamps) + tHold;
+    x1_tmp := SimulationTimes - tHold;
+    rtb_Saturation3 := ((((tHold - x1_tmp_tmp) * PositionRefm) + x1) + (x1_tmp * PositionRefm)) + ((x1_tmp_0 * (x1_tmp * x1_tmp)) / 2.0);
+    (* '<S2>:1:45' v = vs+(slopeExt/t3)*(t-(t0+t1+t2)); *)
+    PositionRefm := (x1_tmp * (slopeExt / tRamps)) + PositionRefm;
+ELSIF (SimulationTimes >= x4_tmp_tmp_0) AND (SimulationTimes < x4_tmp) THEN 
+    (* '<S2>:1:46' elseif t>=(t0+t1+t2+t3) && t<(t0+t1+t2+t3+t4) *)
+    (* '<S2>:1:47' x = x_ref; *)
+    (* '<S2>:1:48' v = v0; *)
+    PositionRefm := v0ms;
+ELSE 
+    x1_tmp_0 := ((x1_tmp_tmp + tHold) + tRamps) + tHoldPoss;
+    slopeExt := x1_tmp_0 + tRamps;
+
+    IF (SimulationTimes >= x1_tmp_0) AND (SimulationTimes < slopeExt) THEN 
+        (* '<S2>:1:49' elseif t>=(t0+t1+t2+t3+t4) && t<(t0+t1+t2+t3+t4+t5) *)
+        (* '<S2>:1:50' x = x_ref - v0*(t-(t0+t1+t2+t3+t4))+(slopeRetr/t5)*(t-(t0+t1+t2+t3+t4))^2/2; *)
+        x1_tmp_0 := SimulationTimes - x1_tmp_0;
+        rtb_Saturation3 := (rtb_Saturation3 - (x1_tmp_0 * v0ms)) + ((x1_tmp * (x1_tmp_0 * x1_tmp_0)) / 2.0);
+        (* '<S2>:1:51' v = v0+(slopeRetr/t5)*(t-(t0+t1+t2+t3+t4)); *)
+        PositionRefm := (x1_tmp_0 * x1_tmp) + v0ms;
+    ELSE 
+        x1_tmp_0 := slopeExt + tHold;
+
+        IF (SimulationTimes >= slopeExt) AND (SimulationTimes < x1_tmp_0) THEN 
+            (* '<S2>:1:52' elseif t>=(t0+t1+t2+t3+t4+t5) && t<(t0+t1+t2+t3+t4+t5+t6) *)
+            (* '<S2>:1:53' x = x4-vs*(t-(t0+t1+t2+t3+t4+t5)); *)
+            rtb_Saturation3 := x4 - ((SimulationTimes - slopeExt) * PositionRefm);
+            (* '<S2>:1:54' v = -vs; *)
+            PositionRefm :=  -PositionRefm;
+        ELSIF (SimulationTimes >= x1_tmp_0) AND (SimulationTimes < (x1_tmp_0 + tRamps)) THEN 
+            (* '<S2>:1:55' elseif t>=(t0+t1+t2+t3+t4+t5+t6) && t<(t0+t1+t2+t3+t4+t5+t6+t7) *)
+            (* '<S2>:1:56' x = x5-vs*(t-(t0+t1+t2+t3+t4+t5+t6))-(slopeRetr/t3)*(t-(t0+t1+t2+t3+t4+t5+t6))^2/2; *)
+            tHold := SimulationTimes - x1_tmp_0;
+            rtb_Saturation3 := ((x4 - ((x1_tmp_0 - slopeExt) * PositionRefm)) - (tHold * PositionRefm)) - ((x1_tmp * (tHold * tHold)) / 2.0);
+            (* '<S2>:1:57' v = -vs-(slopeRetr/t3)*(t-(t0+t1+t2+t3+t4+t5+t6)); *)
+            PositionRefm := ( -PositionRefm) - (tHold * x1_tmp);
+        ELSE 
+            (* '<S2>:1:58' else *)
+            (* '<S2>:1:59' x = x0; *)
+            rtb_Saturation3 := x0m;
+            (* '<S2>:1:60' v = v0; *)
+            PositionRefm := v0ms;
+        END_IF;
+
+    END_IF;
+
+END_IF;
+
+(* End of MATLAB Function: '<S1>/RampSignal' *)
+
+
+(* Switch: '<S1>/Switch' *)
+(* '<S2>:1:63' T = t0+t1+t2+t3+t4+t5+t6+t7; *)
+
+IF  NOT Enable THEN 
+    PositionRefm := v0ms;
+END_IF;
+
+(* End of Switch: '<S1>/Switch' *)
+
+
+(* Saturate: '<S1>/Saturation' *)
+
+IF PositionRefm > 150.0 THEN 
+    (* Outport: '<Root>/VelocityRef [m//s]' *)
+    VelocityRefms := 150.0;
+ELSIF PositionRefm >= -150.0 THEN 
+    (* Outport: '<Root>/VelocityRef [m//s]' *)
+    VelocityRefms := PositionRefm;
+ELSE 
+    (* Outport: '<Root>/VelocityRef [m//s]' *)
+    VelocityRefms := -150.0;
+END_IF;
+
+(* End of Saturate: '<S1>/Saturation' *)
+
+
+(* Switch: '<S1>/Switch1' *)
+
+IF Enable THEN 
+    PositionRefm := rtb_Saturation3;
+ELSE 
+    PositionRefm := x0m;
+END_IF;
+
+(* End of Switch: '<S1>/Switch1' *)
+
+
+(* Saturate: '<S1>/Saturation1' *)
+
+IF PositionRefm > 500.0 THEN 
+    (* Outport: '<Root>/PositionRef [m] ' *)
+    PositionRefm := 500.0;
+ELSIF PositionRefm < 0.0 THEN 
+    (* Outport: '<Root>/PositionRef [m] ' *)
+    PositionRefm := 0.0;
+END_IF;
+
+(* End of Saturate: '<S1>/Saturation1' *)
+(* End of Outputs for SubSystem: '<Root>/RampMotionProfileGenerator' *)
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

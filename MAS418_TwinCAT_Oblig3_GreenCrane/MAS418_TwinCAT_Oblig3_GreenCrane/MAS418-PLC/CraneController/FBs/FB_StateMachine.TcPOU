@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_StateMachine" Id="{1198fdea-b4e3-4647-9eef-33003000b939}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_StateMachine
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fbMotionSelector : FB_MotionRefSelector;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF (G_ControllerGreenCrane.bEnable) THEN
+	G_ControllerGreenCrane.eStatus := E_Status.Ready;
+	IF (G_ControllerGreenCrane.bMode) THEN
+		G_ControllerGreenCrane.eMode := E_Mode.Auto;
+		G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart := FALSE;
+	ELSE  
+		G_ControllerGreenCrane.eMode := E_Mode.Manual;
+		G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart;		
+	END_IF
+ELSE
+	G_ControllerGreenCrane.bStart := G_ControllerGreenCrane.bLamp := FALSE;
+	G_ControllerGreenCrane.eStatus := E_Status.NotReady;
+	IF (G_ControllerGreenCrane.bMode) THEN
+		G_ControllerGreenCrane.eMode := E_Mode.Auto;
+	ELSE  
+		G_ControllerGreenCrane.eMode := E_Mode.Manual;
+	END_IF
+END_IF
+
+IF (G_ControllerGreenCrane.bLamp) THEN
+	G_ControllerGreenCrane.fTimer := G_ControllerGreenCrane.fTimer + 0.01;
+ELSE 
+	G_ControllerGreenCrane.fTimer := 0.0;
+END_IF
+
+fbMotionSelector();]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
