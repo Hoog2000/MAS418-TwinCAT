@@ -13,15 +13,19 @@ VAR_OUTPUT
 END_VAR
 VAR
 	fbOpenLoopControl : FB_OpenLoopControl;
+	fbClosedLoopControl : FB_ClosedLoopControl;	
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF NOT(G_ControllerGreenCrane.eStatus = E_Status.Running) THEN 
-	fbOpenLoopControl(bEnable := FALSE, fVelocityReference_ms := vCylJoyms, fMaxValveFlow_lmin := 19, fVelocityFeedForward => G_ControllerGreenCrane.fGain);
-ELSIF NOT(Auto1Man0) THEN
+      <ST><![CDATA[//IF NOT(G_ControllerGreenCrane.eStatus = E_Status.Running) THEN 
+	//fbOpenLoopControl(bEnable := FALSE, fVelocityReference_ms := vCylJoyms, fMaxValveFlow_lmin := 19, fVelocityFeedForward => G_ControllerGreenCrane.fGain);
+IF NOT(Auto1Man0) AND (G_ControllerGreenCrane.bStart) THEN
     fbOpenLoopControl(bEnable := TRUE, fVelocityReference_ms := vCylJoyms, fMaxValveFlow_lmin := 19, fVelocityFeedForward => G_ControllerGreenCrane.fGain);
+ELSIF  (Auto1Man0) AND (G_ControllerGreenCrane.bStartAutoMode) THEN
+	fbClosedLoopControl(ssMethodType:=1, bEnable:=TRUE, bActivateIntegralController:=TRUE, fProportionalGain:=29.17, fIntegralGain:=19.49, fPositionReference:=G_ControllerGreenCrane.fPosSP, fPositionFeedback:=G_CylinderState.xm, bIntegralControllReset:=0, fClosedLoopPosition => G_ControllerGreenCrane.fGain);
 ELSE 
 	fbOpenLoopControl(bEnable := FALSE, fVelocityReference_ms := vCylJoyms, fMaxValveFlow_lmin := 19, fVelocityFeedForward => G_ControllerGreenCrane.fGain); //This will be Auto
+	fbClosedLoopControl(ssMethodType:=0, bEnable:=TRUE, bActivateIntegralController:=TRUE, fProportionalGain:=29.17, fIntegralGain:=19.49, fPositionReference:=G_ControllerGreenCrane.fPosSP, fPositionFeedback:=G_CylinderState.xm, bIntegralControllReset:=1, fClosedLoopPosition => G_ControllerGreenCrane.fGain);
 END_IF;]]></ST>
     </Implementation>
   </POU>

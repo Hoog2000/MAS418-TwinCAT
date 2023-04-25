@@ -1167,7 +1167,7 @@
                         </o>
                         <o>
                           <v n="Id">390574330L</v>
-                          <v n="Value">"ppBar: %0.1f [bar]"</v>
+                          <v n="Value">"Piston side: %0.1f [bar]"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -1179,7 +1179,7 @@
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
-                          <v n="Value">"927"</v>
+                          <v n="Value">"541"</v>
                         </o>
                       </l>
                     </o>
@@ -2134,7 +2134,7 @@
                         </o>
                         <o>
                           <v n="Id">390574330L</v>
-                          <v n="Value">"prBar: %0.1f [bar]"</v>
+                          <v n="Value">"Rod Side: %0.1f [bar]"</v>
                         </o>
                         <o>
                           <v n="Id">2597686782L</v>
@@ -2146,7 +2146,7 @@
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
-                          <v n="Value">"96"</v>
+                          <v n="Value">"169"</v>
                         </o>
                       </l>
                     </o>
@@ -4508,12 +4508,12 @@
                           <v n="Value">""</v>
                         </o>
                         <o>
-                          <v n="Id">823443203L</v>
-                          <v n="Value">"679"</v>
-                        </o>
-                        <o>
                           <v n="Id">2597686782L</v>
                           <v n="Value">true</v>
+                        </o>
+                        <o>
+                          <v n="Id">823443203L</v>
+                          <v n="Value">"679"</v>
                         </o>
                       </l>
                     </o>

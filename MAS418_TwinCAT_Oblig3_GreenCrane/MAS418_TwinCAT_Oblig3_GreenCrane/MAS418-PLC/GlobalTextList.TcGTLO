@@ -121,6 +121,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"541"</v>
+              <v n="TextDefault">"Piston side: %0.1f [bar]"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"280"</v>
               <v n="TextDefault">"ppBar: %0.1f"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -138,6 +143,11 @@
             <o>
               <v n="TextID">"96"</v>
               <v n="TextDefault">"prBar: %0.1f [bar]"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"169"</v>
+              <v n="TextDefault">"Rod Side: %0.1f [bar]"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

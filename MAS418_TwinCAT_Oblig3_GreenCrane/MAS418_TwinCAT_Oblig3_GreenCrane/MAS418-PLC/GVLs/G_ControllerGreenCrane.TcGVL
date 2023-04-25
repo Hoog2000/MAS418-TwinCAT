@@ -3,6 +3,7 @@
   <GVL Name="G_ControllerGreenCrane" Id="{22cffb37-296d-4f29-882a-b64552c56996}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
+	//General Global Variables
 	bEnable : BOOL;
 	bMode : BOOL;
 	bStart : BOOL := FALSE;
@@ -12,6 +13,11 @@ VAR_GLOBAL
 	eMode : E_Mode;
 	eStatus : E_Status;
 	fGain : LREAL;
+	
+	//Variables from ADS
+	bStartAutoMode : BOOL := FALSE;
+	fVelSP : LREAL;
+	fPosSP : LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

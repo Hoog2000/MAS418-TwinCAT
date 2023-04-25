@@ -7,8 +7,7 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[fbStateMachine(); 
-]]></ST>
+      <ST><![CDATA[fbStateMachine();]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

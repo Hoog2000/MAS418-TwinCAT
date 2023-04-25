@@ -16,7 +16,12 @@ END_VAR
 	G_ControllerGreenCrane.eStatus := E_Status.Ready;
 	IF (G_ControllerGreenCrane.bMode) THEN
 		G_ControllerGreenCrane.eMode := E_Mode.Auto;
-		G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart := FALSE;
+		IF (G_ControllerGreenCrane.bStartAutoMode) THEN
+			G_ControllerGreenCrane.bLamp := TRUE;
+			G_ControllerGreenCrane.bStart := FALSE;
+		ELSE
+			G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart := FALSE;
+		END_IF
 	ELSE  
 		G_ControllerGreenCrane.eMode := E_Mode.Manual;
 		G_ControllerGreenCrane.bLamp := G_ControllerGreenCrane.bStart;
